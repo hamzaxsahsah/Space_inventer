@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://player/Spaceship.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemy/Enemy1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://testscene.gd" type="Script" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 68, -85, 0, 0, 0, 0, 417, -97, 0, 0, 0, 0, 412, -30, 0, 0, 0, 0, 74, -39, 0, 0, 0, 0, 66, -87 )
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+Enemy = ExtResource( 2 )
+
+[node name="Area2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 183, 264 )
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 68, -85 )
+rotation = -0.0343675
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.468
+one_shot = true
+autostart = true
